@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대명 스마트 러너 (Blue Runner)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@600;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; }
+        
+        /* 캔버스 도트 느낌 테두리 및 그림자 효과 */
+        canvas {
+            box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.2), 0 10px 10px -5px rgba(30, 58, 138, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex flex-col justify-center items-center p-4 overflow-hidden">
+
+    <div class="w-full max-w-lg flex justify-between items-center mb-4 text-white">
+        <div>
+            <h1 class="text-xl font-extrabold tracking-wider text-sky-400">💙 DM RUNNER</h1>
+            <p class="text-xs text-slate-400">장애물을 점프해서 피하세요!</p>
+        </div>
+        <div class="text-right">
+            <div class="text-xs text-slate-400">SCORE</div>
+            <div id="scoreDisplay" class="text-2xl font-black text-white">0</div>
+        </div>
+    </div>
+
+    <div class="relative rounded-2xl overflow-hidden border-4 border-blue-900 bg-slate-950">
+        <canvas id="gameCanvas" width="600" height="300" class="block"></canvas>
+        
+        <div id="overlay" class="absolute inset-0 bg-slate-950/80 flex flex-col justify-center items-center backdrop-blur-xs transition-all duration-300">
+            <h2 id="overlayTitle" class="text-3xl font-black text-white mb-2 tracking-wide">BLUE RUNNER</h2>
+            <p id="overlaySub" class="text-sm text-slate-400 mb-6">스페이스바 또는 화면을 터치해서 점프</p>
+            <button id="startBtn" class="bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-blue-600/30 transition-all cursor-pointer">
+                게임 시작
+            </button>
+        </div>
+    </div>
+
+    <div class="mt-4 text-xs text-slate-500 text-center sm:hidden">
+        화면 아무 곳이나 터치하면 점프합니다.
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const overlay = document.getElementById('overlay');
+        const overlayTitle = document.getElementById('overlayTitle');
+        const overlaySub = document.getElementById('overlaySub');
+        const startBtn = document.getElementById('startBtn');
+
+        // 게임 상태 상태 변수
+        let isPlaying = false;
+        let score = 0;
+        let gameSpeed = 5;
+        let animationFrameId;
+
+        // 플레이어 (점프하는 사각형) 설정
+        const player = {
+            x: 50,
+            y: 200,
+            width: 30,
+            height: 40,
+            color: '#3b82f6', // 밝은 블루
+            gravity: 0.6,
+            velocity: 0,
+            jumpPower: -12,
+            isGrounded: false
+        };
+
+        // 장애물 배열 및 설정
+        let obstacles = [];
+        let obstacleTimer = 0;
+
+        // 이벤트 리스너 등록 (PC 스페이스바 & 모바일 터치 전체)
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault(); // 스페이스바 누를 때 브라우저 스크롤 방지
+                triggerJump();
+            }
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            triggerJump();
+        });
+
+        startBtn.addEventListener('click', startGame);
+
+        function triggerJump() {
+            if (!isPlaying) return;
+            if (player.isGrounded) {
+                player.velocity = player.jumpPower;
+                player.isGrounded = false;
+            }
+        }
+
+        // 게임 시작 및 초기화
+        function startGame() {
+            isPlaying = true;
+            score = 0;
+            gameSpeed = 5;
+            obstacles = [];
+            obstacleTimer = 0;
+            player.y = 200;
+            player.velocity = 0;
+            scoreDisplay.innerText = score;
+            
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            
+            cancelAnimationFrame(animationFrameId);
+            gameLoop();
+        }
+
+        // 게임 오버 처리
+        function gameOver() {
+            isPlaying = false;
+            overlayTitle.innerText = "GAME OVER";
+            overlayTitle.classList.add('text-red-500');
+            overlaySub.innerText = `최종 점수: ${score}점`;
+            startBtn.innerText = "다시 시도";
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        // 장애물 스폰 로직
+        function spawnObstacle() {
+            obstacleTimer++;
+            // 무작위 주기로 장애물 생성
+            if (obstacleTimer > Math.random() * 60 + 50) {
+                const height = Math.random() * 30 + 30; // 30px ~ 60px 무작위 높이
+                obstacles.push({
+                    x: canvas.width,
+                    y: 250 - height, // 바닥 라인(250px) 기준
+                    width: 20,
+                    height: height,
+                    color: '#ef4444' // 위험 요소 빨간색
+                });
+                obstacleTimer = 0;
+            }
+        }
+
+        // 메인 게임 루프
+        function gameLoop() {
+            if (!isPlaying) return;
+
+            // 1. 화면 지우기
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 2. 바닥선 그리기
+            ctx.strokeStyle = '#1e3a8a';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(0, 250);
+            ctx.lineTo(canvas.width, 250);
+            ctx.stroke();
+
+            // 3. 플레이어 물리 연산 및 그리기
+            player.velocity += player.gravity;
+            player.y += player.velocity;
+
+            // 바닥에 닿았을 때 처리
+            if (player.y >= 250 - player.height) {
+                player.y = 250 - player.height;
+                player.velocity = 0;
+                player.isGrounded = true;
+            }
+
+            // 플레이어 캐릭터 그리기 (둥근 사각형 코너 효과)
+            ctx.fillStyle = player.color;
+            ctx.beginPath
