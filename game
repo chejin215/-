@@ -171,4 +171,50 @@
 
             // 플레이어 캐릭터 그리기 (둥근 사각형 코너 효과)
             ctx.fillStyle = player.color;
-            ctx.beginPath
+            ctx.beginPath();
+            ctx.roundRect(player.x, player.y, player.width, player.height, 8);
+            ctx.fill();
+
+            // 4. 장애물 업데이트 및 그리기
+            spawnObstacle();
+            
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                let obs = obstacles[i];
+                obs.x -= gameSpeed;
+
+                // 장애물 렌더링
+                ctx.fillStyle = obs.color;
+                ctx.beginPath();
+                ctx.roundRect(obs.x, obs.y, obs.width, obs.height, 4);
+                ctx.fill();
+
+                // 충돌 감지 (AABB 알고리즘)
+                if (
+                    player.x < obs.x + obs.width &&
+                    player.x + player.width > obs.x &&
+                    player.y < obs.y + obs.height &&
+                    player.y + player.height > obs.y
+                ) {
+                    gameOver();
+                    return;
+                }
+
+                // 화면 밖으로 나간 장애물 제거 및 점수 획득
+                if (obs.x + obs.width < 0) {
+                    obstacles.splice(i, 1);
+                    score += 10;
+                    scoreDisplay.innerText = score;
+
+                    // 속도 점진적 증가로 난이도 조절
+                    if (score % 50 === 0) {
+                        gameSpeed += 0.5;
+                    }
+                }
+            }
+
+            // 루프 반복 가동
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+    </script>
+</body>
+</html>
