@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>대명여고 2026년 11월 급식 알레르기 안내 뷰어</title>
+<title>대명여고 2026년 8월 급식 알레르기 안내 뷰어</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Noto Sans KR',sans-serif;background:#f4f5f7;color:#333}
@@ -49,17 +49,17 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f5f7;color:#333}
 </head>
 <body>
 <header id="header">
-  <div class="header-title">대명여고 2026년 11월 급식 알레르기 안내 뷰어</div>
+  <div class="header-title">대명여고 2026년 8월 급식 알레르기 안내 뷰어</div>
   <div class="week-select-wrapper">
     <button class="week-select-btn" id="dropdownBtn">
       <span id="current-week-label">1주차 식단</span> ▼
     </button>
     <div id="weekDropdown" class="dropdown-menu">
-      <button onclick="selectWeek(1)" class="active">1주차 (11/2 ~ 11/6)</button>
-      <button onclick="selectWeek(2)">2주차 (11/9 ~ 11/13)</button>
-      <button onclick="selectWeek(3)">3주차 (11/16 ~ 11/20)</button>
-      <button onclick="selectWeek(4)">4주차 (11/23 ~ 11/27)</button>
-      <button onclick="selectWeek(5)">5주차 (11/30)</button>
+      <button onclick="selectWeek(1)" class="active">1주차 (8/3 ~ 8/7)</button>
+      <button onclick="selectWeek(2)">2주차 (8/10 ~ 8/14)</button>
+      <button onclick="selectWeek(3)">3주차 (8/17 ~ 8/21)</button>
+      <button onclick="selectWeek(4)">4주차 (8/24 ~ 8/28)</button>
+      <button onclick="selectWeek(5)">5주차 (8/31)</button>
     </div>
   </div>
 </header>
@@ -89,356 +89,408 @@ const ALLERGY_MAP = {
 
 const menuData = {
   1: {
-    title:"1주차 (11월 2일 ~ 6일)",
+    title:"1주차 (8월 3일 ~ 7일)",
     days:[
       {
-        date:"11/2",day:"월",note:"",
+        date:"8/3",day:"월",note:"개학식",
         lunch:[
-          {menu:"수수밥",allergies:[]},
-          {menu:"맑은바지락국",allergies:[2,5,8,9,13,18]},
-          {menu:"묵은지갈비찜",allergies:[5,6,10,13,18]},
-          {menu:"치즈감자채전",allergies:[2,5,6,10]},
-          {menu:"그래놀라샐러드&요거트D",allergies:[1,2,5,6,12]},
-          {menu:"석박지",allergies:[9]},
-          {menu:"귤",allergies:[]}
-        ],
-        dinner:[
-          {menu:"마제소바",allergies:[1,5,6,10]},
-          {menu:"김가루밥(소량)",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"오꼬노미야끼",allergies:[1,5,6,9,10,13,17]},
-          {menu:"열대과일샐러드",allergies:[1,2,5,6,11,13]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"오라떼",allergies:[5,13]}
-        ]
-      },
-      {
-        date:"11/3",day:"화",note:"",
-        lunch:[
-          {menu:"큐브스테이크덮밥",allergies:[5,6,10,13]},
-          {menu:"모듬어묵국",allergies:[1,5,6,8,9,18]},
-          {menu:"콘소메이징치킨",allergies:[1,2,5,6,15]},
-          {menu:"리코타망고샐러드",allergies:[1,2,5,6]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"황치즈쫀득볼",allergies:[1,2,5,6]}
-        ],
-        dinner:[
-          {menu:"흑미밥",allergies:[]},
-          {menu:"온도토리묵국",allergies:[1,3,5,6,7,9,18]},
-          {menu:"불향쭈꾸미불고기",allergies:[5,6,10,12,13,16,18]},
+          {menu:"찹쌀밥",allergies:[]},
+          {menu:"도토리묵사발",allergies:[5,6,9,16]},
+          {menu:"불향쭈꾸미불고기",allergies:[5,6,10,12,13,18]},
           {menu:"갈릭고르곤졸라피자",allergies:[6,12,13]},
           {menu:"콩나물무침",allergies:[5]},
-          {menu:"배추김치",allergies:[9]}
-        ]
-      },
-      {
-        date:"11/4",day:"수",note:"",
-        lunch:[
-          {menu:"백미밥",allergies:[]},
-          {menu:"굴림만두떡국",allergies:[1,5,6,8,9,10,15,16,18]},
-          {menu:"고추장오리불고기",allergies:[]},
-          {menu:"시금치프리타타",allergies:[1,2,5,10,12]},
-          {menu:"과일샐러드",allergies:[1,2,5,6,12]},
-          {menu:"총각김치",allergies:[9]},
-          {menu:"딸기마들렌",allergies:[1,2,5,6]}
+          {menu:"열무김치",allergies:[9]},
+          {menu:"개학케이크",allergies:[1,2,5,6]}
         ],
         dinner:[
-          {menu:"스팸마요덮밥",allergies:[1,2,5,6,10,13,15,16]},
-          {menu:"팽이두부된장국",allergies:[5,6,8,9,18]},
-          {menu:"후라이드치킨꼬치",allergies:[5,6,12,13,15]},
-          {menu:"푸실리샐러드",allergies:[1,5,6,12,13]},
+          {menu:"참치밥버거",allergies:[1,2,5,6,9,10,13,15,16,18]},
+          {menu:"우동장국",allergies:[1,2,5,6,7,8,9,18]},
+          {menu:"로제구술떡볶이",allergies:[1,2,5,6,10,15,16]},
+          {menu:"야채튀김&간장",allergies:[1,5,6,8,9,13,17,18]},
           {menu:"깍두기",allergies:[9]},
-          {menu:"레몬에이드",allergies:[]}
+          {menu:"제주청귤주스",allergies:[13]}
         ]
       },
       {
-        date:"11/5",day:"목",note:"",
+        date:"8/4",day:"화",note:"다채움DAY",
         lunch:[
-          {menu:"기장밥",allergies:[]},
-          {menu:"부대찌개&라면사리",allergies:[1,2,5,6,8,9,10,12,13,15,16,18]},
-          {menu:"삼겹캠핑구이",allergies:[2,5,6,10,15,16]},
-          {menu:"꿀단호박조림",allergies:[2,4,14,19]},
-          {menu:"참나물사과샐러드",allergies:[5,6]},
+          {menu:"현미밥",allergies:[]},
+          {menu:"소고기샤브샤브국",allergies:[5,6,8,9,16,18]},
+          {menu:"언양바싹불고기",allergies:[1,2,5,6,10,12,15,16]},
+          {menu:"해물볶음면",allergies:[5,6,8,9,13,17,18]},
+          {menu:"수제양파장아찌",allergies:[5,6,13]},
           {menu:"배추김치",allergies:[9]},
-          {menu:"무지방요구르트",allergies:[2]}
+          {menu:"골드키위",allergies:[]}
         ],
         dinner:[
-          {menu:"차조밥",allergies:[]},
-          {menu:"콩나물국",allergies:[5,8,9,18]},
-          {menu:"피자찜닭",allergies:[1,2,5,6,12,13,15]},
-          {menu:"게살크림고로케",allergies:[1,2,5,6,10,16]},
-          {menu:"배추김치",allergies:[9]},
+          {menu:"기장밥",allergies:[]},
+          {menu:"돈육김치찌개",allergies:[5,8,9,10,13,16,18]},
+          {menu:"분모자간장찜닭",allergies:[5,6,13,15,18]},
+          {menu:"납작만두&야채무침",allergies:[1,5,6,13]},
+          {menu:"백김치",allergies:[6]},
           {menu:"쿠앤크아몬드",allergies:[]}
         ]
       },
       {
-        date:"11/6",day:"금",note:"잔반 없는 날",
+        date:"8/5",day:"수",note:"",
         lunch:[
-          {menu:"날치알김치볶음밥",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"소고기샤브샤브국",allergies:[5,6,8,9,16,18]},
-          {menu:"바질크림뇨끼",allergies:[2,5,6,10,13,18]},
-          {menu:"흑임자두부샐러드",allergies:[1,5,12]},
-          {menu:"깍두기",allergies:[9]},
-          {menu:"초코찰보루빵",allergies:[1,2,5,6]}
+          {menu:"백미밥",allergies:[]},
+          {menu:"사골우거지국",allergies:[5,16]},
+          {menu:"마라샹궈",allergies:[1,2,5,6,9,10,13,15,16,17,18]},
+          {menu:"통모짜치즈카츠",allergies:[1,2,5,6]},
+          {menu:"포두부오이냉채",allergies:[13]},
+          {menu:"열무김치",allergies:[9]},
+          {menu:"얼려먹는 요구르트",allergies:[2]}
         ],
         dinner:[
-          {menu:"숯불치킨덮밥&눈꽃치즈",allergies:[1,2,5,6,12,15]},
-          {menu:"미소된장국",allergies:[5,6,8,9,18]},
-          {menu:"통모짜렐라핫도그",allergies:[1,2,5,6,10,12,16]},
-          {menu:"감귤샐러드",allergies:[1,2,5,6]},
+          {menu:"기장밥",allergies:[]},
+          {menu:"스팸김치짜글이",allergies:[1,2,5,6,9,10,13,15,16]},
+          {menu:"연탄간장불고기",allergies:[5,6,10,12,13]},
+          {menu:"참치마요&불닭김",allergies:[1,5,16,18]},
+          {menu:"백김치",allergies:[6]},
+          {menu:"과채주스",allergies:[13]}
+        ]
+      },
+      {
+        date:"8/6",day:"목",note:"",
+        lunch:[
+          {menu:"소고기떡국",allergies:[1,8,9,16,18]},
+          {menu:"고추장오리불고기",allergies:[15]},
+          {menu:"베이컨감자채볶음",allergies:[5,10]},
+          {menu:"유자치커리샐러드",allergies:[1,2,5,6,13]},
           {menu:"배추김치",allergies:[9]},
-          {menu:"초코볼요거트",allergies:[2,5,6]}
+          {menu:"수박에이드",allergies:[13]}
+        ],
+        dinner:[
+          {menu:"백미밥",allergies:[]},
+          {menu:"소고기당면국",allergies:[5,6,8,9,16,18]},
+          {menu:"치즈함박스테이크",allergies:[1,2,5,6,10,12,13,15,16]},
+          {menu:"시금치프리타타",allergies:[1,2,5,10,12]},
+          {menu:"지중해식샐러드",allergies:[1,2,5,6,12]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"레몬에이드",allergies:[]}
+        ]
+      },
+      {
+        date:"8/7",day:"금",note:"잔반 없는 날",
+        lunch:[
+          {menu:"달걀볶음밥",allergies:[1,2,5,6,10,13,15,16,18]},
+          {menu:"해물짬뽕국",allergies:[5,6,8,9,13,16,17,18]},
+          {menu:"찹쌀꿔바로우",allergies:[1,5,6,10,12,13,18]},
+          {menu:"고추잡채&꽃빵",allergies:[5,6,10]},
+          {menu:"하트단무지",allergies:[]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"식혜",allergies:[]}
+        ],
+        dinner:[
+          {menu:"기장밥",allergies:[]},
+          {menu:"부대찌개&라면사리",allergies:[1,2,5,6,8,9,10,13,15,16,18]},
+          {menu:"오징어까스&양파드레싱",allergies:[1,5,6,13,17]},
+          {menu:"찰떡가마보꼬어묵조림",allergies:[1,5,6,13]},
+          {menu:"백김치",allergies:[6]},
+          {menu:"초코우유",allergies:[2]}
         ]
       }
     ]
   },
 
   2: {
-    title:"2주차 (11월 9일 ~ 13일)",
+    title:"2주차 (8월 10일 ~ 14일)",
     days:[
       {
-        date:"11/9",day:"월",note:"",
+        date:"8/10",day:"월",note:"",
         lunch:[
-          {menu:"랍스터&투움바파스타",allergies:[1,2,5,6,9,10,13]},
-          {menu:"페스츄리컵스프",allergies:[2,5,6,16,18]},
-          {menu:"소고기볶음밥(소량)",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"오렌지샐러드",allergies:[1,2,5,6]},
-          {menu:"모듬피클",allergies:[]},
-          {menu:"과일스무디(딸기,망고)",allergies:[]}
+          {menu:"홍국쌀밥",allergies:[]},
+          {menu:"김치수제비국",allergies:[1,5,6,8,9,18]},
+          {menu:"가자미크런치까스&어니언소스",allergies:[1,5,6,13]},
+          {menu:"모듬장조림",allergies:[1,5,6,10,13,18]},
+          {menu:"요거트과일샐러드",allergies:[1,2,5,6]},
+          {menu:"콩나물무침",allergies:[5]},
+          {menu:"총각김치",allergies:[9]}
         ],
         dinner:[
-          {menu:"혼합잡곡밥",allergies:[5]},
-          {menu:"얼큰소고기샤브국",allergies:[5,6,8,9,16,18]},
-          {menu:"분모자짜장불고기",allergies:[2,5,6,10,13,16]},
-          {menu:"콘치즈만두",allergies:[1,2,5,6,10,12,16,18]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"골라먹는푸딩",allergies:[11]}
-        ]
-      },
-      {
-        date:"11/10",day:"화",note:"",
-        lunch:[
-          {menu:"기장밥",allergies:[]},
-          {menu:"돼지고기김치찌개",allergies:[5,8,9,10,13,16,18]},
-          {menu:"훈제오리볶음&또띠아",allergies:[1,2,5,6,12,13]},
-          {menu:"치필링카츠",allergies:[1,2,5,6,10]},
-          {menu:"새우살애호박볶음",allergies:[5,9,13]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"파인애플",allergies:[]}
-        ],
-        dinner:[
-          {menu:"장조림버터비빔밥",allergies:[1,2,5,6,10,13]},
-          {menu:"유부주머니어묵국",allergies:[1,5,6,8,9,10,16,18]},
-          {menu:"후추닭날개구이",allergies:[5,6,12,13,15]},
-          {menu:"양상추유자샐러드",allergies:[5,6,12,13]},
+          {menu:"치킨마요덮밥",allergies:[1,2,5,6,13,15,18]},
+          {menu:"두부된장국",allergies:[5,6,8,9,18]},
+          {menu:"스텔라별떡볶이",allergies:[1,2,5,6,10]},
+          {menu:"그린샐러드&키위드레싱",allergies:[1,2,5,6,12]},
           {menu:"깍두기",allergies:[9]},
-          {menu:"유산균음료",allergies:[2,5]}
+          {menu:"망고워터젤리",allergies:[]}
         ]
       },
       {
-        date:"11/11",day:"수",note:"농업인의 날",
+        date:"8/11",day:"화",note:"",
         lunch:[
-          {menu:"백미밥",allergies:[]},
-          {menu:"얼큰고기순대국",allergies:[2,5,6,9,10,13,16]},
-          {menu:"해물파전",allergies:[1,5,6,9,13,17]},
-          {menu:"꽃맛살샐러드",allergies:[1,2,5,6,8,12,18]},
-          {menu:"도라지오이무침",allergies:[5,6,13]},
-          {menu:"석박지",allergies:[9]},
-          {menu:"앙버터가래떡",allergies:[4,5,14,19]}
+          {menu:"차조밥",allergies:[]},
+          {menu:"닭곰탕&당면사리",allergies:[8,9,15,18]},
+          {menu:"곰들이떡갈비",allergies:[5,6,10,12,13,15,16,18]},
+          {menu:"오지치즈후라이",allergies:[2,5,6,10]},
+          {menu:"총각김치",allergies:[9]},
+          {menu:"골드키위푸딩",allergies:[]}
         ],
         dinner:[
-          {menu:"후리가케밥",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"미니우동",allergies:[1,2,5,6,7,8,9,18]},
-          {menu:"남산식왕돈까스",allergies:[1,5,6,10,12,13,16]},
-          {menu:"양배추샐러드",allergies:[1,5,12]},
+          {menu:"수수밥",allergies:[]},
+          {menu:"삼색물만둣국",allergies:[1,5,6,8,9,10,16,18]},
+          {menu:"큐브찹스테이크",allergies:[5,6,10,12,13,16]},
+          {menu:"냉파스타샐러드",allergies:[1,2,5,6,12,13]},
           {menu:"배추김치",allergies:[9]},
-          {menu:"초코츄러스",allergies:[1,2,5,6]}
+          {menu:"딸기크림치즈떡",allergies:[1,2,5,6]}
         ]
       },
       {
-        date:"11/12",day:"목",note:"",
-        lunch:[
-          {menu:"찰현미밥",allergies:[]},
-          {menu:"해물짬뽕국",allergies:[5,6,8,9,13,16,17,18]},
-          {menu:"찹쌀꿔바로우",allergies:[1,5,6,10,12,13,18]},
-          {menu:"짜장볶음우동",allergies:[2,5,6,9,13,16,17]},
-          {menu:"꽈리고추찜",allergies:[5,6,13]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"아이스망고바",allergies:[1,2,5]}
-        ],
-        dinner:[
-          {menu:"율무밥",allergies:[]},
-          {menu:"소고기무국",allergies:[5,6,8,9,16,18]},
-          {menu:"자메이카스테이크",allergies:[2,5,6,12,15]},
-          {menu:"베이컨크림떡볶이",allergies:[2,5,6,10,13,18]},
-          {menu:"깍두기",allergies:[9]},
-          {menu:"복숭아아이스티",allergies:[11,13]}
-        ]
-      },
-      {
-        date:"11/13",day:"금",note:"생일축하의 날",
+        date:"8/12",day:"수",note:"생일축하의 날",
         lunch:[
           {menu:"밤팥밥",allergies:[]},
           {menu:"소고기미역국",allergies:[5,6,8,9,16,18]},
-          {menu:"궁중갈비찜",allergies:[10]},
-          {menu:"한식잡채",allergies:[1,5,6,10,13,18]},
-          {menu:"검은깨온두부",allergies:[5]},
-          {menu:"볶음김치",allergies:[5,9,13]},
-          {menu:"연탄생일케이크",allergies:[1,2,5,6]}
+          {menu:"돼지갈비찜",allergies:[5,6,10,13,18]},
+          {menu:"오색잡채",allergies:[1,5,6,10,13,18]},
+          {menu:"삼색나물&고추장",allergies:[5,6]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"생일베리파이",allergies:[1,2,5,6]}
         ],
         dinner:[
-          {menu:"마라로제떡볶이",allergies:[1,2,5,6,10,12,13,15,16]},
-          {menu:"숭늉",allergies:[]},
-          {menu:"후리가케밥(소량)",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"오징어&김말이튀김",allergies:[1,5,6,16,17]},
-          {menu:"단무지무침",allergies:[]},
-          {menu:"과일주스",allergies:[13]}
+          {menu:"열무냉국수",allergies:[1,5,6,9,13,16]},
+          {menu:"김가루밥",allergies:[1,2,5,6,9,13,16,18]},
+          {menu:"자메이카치킨",allergies:[1,2,5,6,12,15]},
+          {menu:"오이콘샐러드",allergies:[1,5,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"수박과일화채",allergies:[11]}
         ]
+      },
+      {
+        date:"8/13",day:"목",note:"",
+        lunch:[
+          {menu:"혼합잡곡밥",allergies:[5]},
+          {menu:"감자옹심이국",allergies:[1,5,6,8,9,17,18]},
+          {menu:"훈제오리볶음&머스타드",allergies:[1,2,5,6,12,13]},
+          {menu:"불고기치즈감자",allergies:[2,5,6,10,12,13,15,16,18]},
+          {menu:"찹쌀콩멸치볶음",allergies:[5,13]},
+          {menu:"총각김치",allergies:[9]},
+          {menu:"자두",allergies:[]}
+        ],
+        dinner:[
+          {menu:"백미밥",allergies:[]},
+          {menu:"나가사끼짬뽕탕",allergies:[5,6,9,13,17,18]},
+          {menu:"짜장불고기",allergies:[2,5,6,10,13,16]},
+          {menu:"레몬크림새우",allergies:[1,5,6,9,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"팝콘",allergies:[2,5]}
+        ]
+      },
+      {
+        date:"8/14",day:"금",note:"광복절 대체휴일 휴무",
+        lunch:[],
+        dinner:[]
       }
     ]
   },
 
   3: {
-    title:"3주차 (11월 16일 ~ 20일)",
+    title:"3주차 (8월 17일 ~ 21일)",
     days:[
       {
-        date:"11/16",day:"월",note:"텀블러DAY",
+        date:"8/17",day:"월",note:"광복절 대체휴일",
+        lunch:[],
+        dinner:[]
+      },
+      {
+        date:"8/18",day:"화",note:"",
         lunch:[
-          {menu:"참치야채비빔밥",allergies:[5,6,13,16,18]},
-          {menu:"숭늉",allergies:[]},
-          {menu:"콰트로치즈피자",allergies:[1,2,5,6,10,12,13,16]},
-          {menu:"참깨오이샐러드",allergies:[5,6,12]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"망고요거트",allergies:[2]},
-          {menu:"딸기코코에이드(텀블러DAY)",allergies:[13]}
+          {menu:"나물비빔밥&계란프라이",allergies:[1,5,6,13]},
+          {menu:"우렁강된장찌개",allergies:[5,6,8,9,18]},
+          {menu:"가지라자냐",allergies:[2,5,6,12,13]},
+          {menu:"단호박고로케&케첩",allergies:[1,5,6,12]},
+          {menu:"도시락김",allergies:[]},
+          {menu:"열무김치",allergies:[9]},
+          {menu:"블루베리요거트",allergies:[2]}
         ],
         dinner:[
-          {menu:"차슈돈코츠라멘",allergies:[1,2,5,6,10,13,15,16]},
-          {menu:"무장아찌밥",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"새우꼬치&타르타르소스",allergies:[1,5,6,9,13]},
-          {menu:"황도사과샐러드",allergies:[11]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"하트파이",allergies:[1,2,5,6]}
+          {menu:"참치야채비빔밥",allergies:[5,6,13,16,18]},
+          {menu:"콘소메이징치킨",allergies:[1,2,5,6,15]},
+          {menu:"단호박고구마샐러드",allergies:[1,2,5,13]},
+          {menu:"토마토카프레제",allergies:[2,12,13]},
+          {menu:"열무김치",allergies:[9]},
+          {menu:"자몽허니블랙티(텀블러지참)",allergies:[13]}
         ]
       },
       {
-        date:"11/17",day:"화",note:"",
+        date:"8/19",day:"수",note:"",
         lunch:[
-          {menu:"백미밥",allergies:[]},
-          {menu:"영양갈비탕",allergies:[1,5,8,9,16,18]},
-          {menu:"부추전&양념장",allergies:[1,5,6,9,13]},
-          {menu:"갑오징어어묵볶음",allergies:[1,5,6,13,17]},
-          {menu:"애플망고치즈샐러드",allergies:[1,2,5,6]},
-          {menu:"석박지",allergies:[9]},
-          {menu:"팥팅찹쌀떡",allergies:[6]}
+          {menu:"흑미잡곡밥",allergies:[5]},
+          {menu:"모듬어묵국",allergies:[1,5,6,8,9,18]},
+          {menu:"보쌈&마늘소스",allergies:[5,6,10,12,13,18]},
+          {menu:"해물파전",allergies:[5,6,9,13,17]},
+          {menu:"꼬시래기무침",allergies:[5,6,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"씨없는 포도",allergies:[]}
         ],
         dinner:[
-          {menu:"베이컨갈릭볶음밥",allergies:[1,2,5,6,9,10,13,16,18]},
-          {menu:"파송송계란국",allergies:[1,8,9,18]},
-          {menu:"비프라자냐",allergies:[2,5,6,12,13,16]},
-          {menu:"청포도샐러드",allergies:[1,2,5,6]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"오레오생크림와플",allergies:[1,2,5,6]}
+          {menu:"투움바파스타",allergies:[1,2,5,6,9,10,12,13]},
+          {menu:"김가루밥",allergies:[1,2,5,6,9,13,16,18]},
+          {menu:"비프토마토스튜",allergies:[2,5,6,12,13,16]},
+          {menu:"회오리빵글핫도그",allergies:[1,2,5,6,10,16]},
+          {menu:"모듬피클",allergies:[]},
+          {menu:"갈릭크로와상",allergies:[1,2,5,6]}
         ]
       },
-      {date:"11/18",day:"수",note:"수능소집일",lunch:[],dinner:[]},
-      {date:"11/19",day:"목",note:"대학수학능력시험",lunch:[],dinner:[]},
-      {date:"11/20",day:"금",note:"진로체험학습",lunch:[],dinner:[]}
+      {
+        date:"8/20",day:"목",note:"",
+        lunch:[
+          {menu:"백미밥",allergies:[]},
+          {menu:"북어콩나물국",allergies:[1,5,6,8,9,18]},
+          {menu:"묵은지사태찜",allergies:[9,10,13]},
+          {menu:"하트미니돈까스",allergies:[1,5,6,10,12,13,18]},
+          {menu:"흑임자연근샐러드",allergies:[1,5]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"블루베리미니도넛",allergies:[1,2,5,6]}
+        ],
+        dinner:[
+          {menu:"냉우동",allergies:[1,2,3,5,6,7,8,9,18]},
+          {menu:"돈육김치밥버거",allergies:[1,2,5,6,9,10,13,15,16]},
+          {menu:"모짜렐라치즈돈까스",allergies:[1,2,5,6,10,12,13,16,18]},
+          {menu:"부추숙주나물",allergies:[]},
+          {menu:"깍두기",allergies:[9]},
+          {menu:"파인애플",allergies:[]}
+        ]
+      },
+      {
+        date:"8/21",day:"금",note:"텀블러DAY / 잔반없는날",
+        lunch:[
+          {menu:"나시고랭볶음밥",allergies:[1,2,5,6,9,12,13,15]},
+          {menu:"미니쌀국수",allergies:[5,6,8,9,15,16,18]},
+          {menu:"고구마&스프링롤",allergies:[1,5,6,10,12,13,16,18]},
+          {menu:"열대과일샐러드",allergies:[1,2,5,6,11,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"매실에이드",allergies:[]}
+        ],
+        dinner:[
+          {menu:"인델리카레라이스",allergies:[2,5,6,10,12,13,16,18]},
+          {menu:"두부장국",allergies:[5,6,8,9,18]},
+          {menu:"갈떡갈떡꼬치",allergies:[5,6,10,12,13,15,16]},
+          {menu:"양배추코울슬로",allergies:[1,2,5,6,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"망고라씨",allergies:[2]}
+        ]
+      }
     ]
   },
 
   4: {
-    title:"4주차 (11월 23일 ~ 27일)",
+    title:"4주차 (8월 24일 ~ 28일)",
     days:[
       {
-        date:"11/23",day:"월",note:"3학년 석식 없음",
+        date:"8/24",day:"월",note:"",
         lunch:[
-          {menu:"율무밥",allergies:[]},
-          {menu:"백짬뽕탕",allergies:[5,6,8,9,13,17,18]},
-          {menu:"묵은지닭갈비",allergies:[9,13,15]},
-          {menu:"경장육사&꽃빵",allergies:[1,5,6,10,13,16]},
-          {menu:"깻잎순두부무침",allergies:[5,6]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"오렌지",allergies:[]}
+          {menu:"혼합잡곡밥",allergies:[5]},
+          {menu:"소고기육개장",allergies:[1,5,6,8,9,16,18]},
+          {menu:"대패통마늘볶음",allergies:[10]},
+          {menu:"모듬쌈&쌈장",allergies:[5,6,13]},
+          {menu:"백김치",allergies:[6]},
+          {menu:"호박인절미",allergies:[5]}
         ],
         dinner:[
-          {menu:"불닭오믈렛",allergies:[1,2,5,6,10,13,15,16]},
-          {menu:"팽이미소장국",allergies:[5,6,8,9,18]},
-          {menu:"유부볶음밥(소량)",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"뿌링모짜치즈볼",allergies:[1,2,5,6]},
-          {menu:"반달단무지",allergies:[]},
-          {menu:"복숭아/망고워터젤리",allergies:[]}
+          {menu:"백미밥",allergies:[]},
+          {menu:"낙지연포탕",allergies:[5,6,8,9,18]},
+          {menu:"고구마함박스테이크",allergies:[1,2,5,6,12,13,15,16,18]},
+          {menu:"야채불면",allergies:[5,6,13]},
+          {menu:"새우살애호박볶음",allergies:[5,9,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"옥수수빵",allergies:[1,2,5,6]}
         ]
       },
       {
-        date:"11/24",day:"화",note:"3학년 석식 없음",
+        date:"8/25",day:"화",note:"",
         lunch:[
-          {menu:"잔치국수",allergies:[1,5,6,8,9,18]},
-          {menu:"돈육김치밥버거",allergies:[1,2,5,6,9,10,15,16]},
-          {menu:"하트가마보꼬스틱",allergies:[1,5,6]},
-          {menu:"방울토마토카프레제",allergies:[1,2,5,6,12,13]},
-          {menu:"배추김치",allergies:[9]},
-          {menu:"팥슈크림붕어빵",allergies:[1,2,5,6]}
+          {menu:"수수밥",allergies:[]},
+          {menu:"차주참치김치찌개",allergies:[5,9,16]},
+          {menu:"올란떡갈비&파채",allergies:[1,2,5,6,10,12,15,16]},
+          {menu:"계란장조림",allergies:[1,5,6,13]},
+          {menu:"야채스틱&쌈장",allergies:[5,6]},
+          {menu:"석박지",allergies:[9]},
+          {menu:"창보루빵",allergies:[1,2,5,6]}
         ],
         dinner:[
-          {menu:"백미밥&계란프라이",allergies:[1,5]},
-          {menu:"스팸김치짜글이",allergies:[1,2,5,6,9,10,13,15,16]},
-          {menu:"연탄간장불고기",allergies:[5,6,10,12,13]},
-          {menu:"쪽파김가루무침",allergies:[5]},
+          {menu:"수수밥",allergies:[]},
+          {menu:"잔파달걀국",allergies:[1,8,9,18]},
+          {menu:"돼지갈비후라이드&청양마요소스",allergies:[1,2,5,6,13,15]},
+          {menu:"알감자버터구이",allergies:[2,5,13]},
           {menu:"배추김치",allergies:[9]},
-          {menu:"100점 바들렌",allergies:[1,2,5,6]}
+          {menu:"블랙사파이어주스",allergies:[13]}
         ]
       },
       {
-        date:"11/25",day:"수",note:"기말시험",
+        date:"8/26",day:"수",note:"다솜DAY",
         lunch:[
-          {menu:"해물빠에야볶음밥",allergies:[2,5,6,9,12,13,17,18]},
-          {menu:"미소된장국",allergies:[5,6,8,9,18]},
-          {menu:"심쿵버거",allergies:[1,2,5,6,12]},
-          {menu:"시리얼과일샐러드",allergies:[1,2,5,6,12]},
-          {menu:"피클/배추김치",allergies:[9]},
-          {menu:"제로나랑드사이다",allergies:[]}
+          {menu:"날치알김치볶음밥",allergies:[1,2,5,6,9,13,16,18]},
+          {menu:"게살면두부탕",allergies:[1,5,8,9,18]},
+          {menu:"치플레생선까스&새우칩",allergies:[1,2,5,6,12,13]},
+          {menu:"바질크림뇨끼",allergies:[2,5,6,10,13,18]},
+          {menu:"열무김치",allergies:[9]},
+          {menu:"딸기주스",allergies:[]}
         ],
-        dinner:[]
+        dinner:[
+          {menu:"클로렐라밥",allergies:[]},
+          {menu:"오만둥이된장국",allergies:[5,6,8,9,18]},
+          {menu:"국물닭갈비",allergies:[15]},
+          {menu:"동글비엔나볶음",allergies:[2,5,6,10,12,13,15,16,18]},
+          {menu:"참나물사과샐러드",allergies:[5,6]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"저당포도슬러시",allergies:[13]}
+        ]
       },
       {
-        date:"11/26",day:"목",note:"",
+        date:"8/27",day:"목",note:"",
         lunch:[
-          {menu:"매콤크림짬뽕",allergies:[2,5,6,9,13,16,17,18]},
-          {menu:"후리가케밥",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"갈비만두&간장",allergies:[1,5,6,10,13,16,18]},
-          {menu:"오리훈제겨자냉채",allergies:[13]},
-          {menu:"단무지/배추김치",allergies:[9]},
-          {menu:"조각멜론",allergies:[]}
+          {menu:"렌틸콩밥",allergies:[]},
+          {menu:"짬뽕수제비국",allergies:[5,6,8,9,17,18]},
+          {menu:"크런치탕수육&소스",allergies:[1,5,6,10,11,12,13,18]},
+          {menu:"토마토계란볶음",allergies:[1,5,12]},
+          {menu:"백김치",allergies:[6]},
+          {menu:"사과요거트",allergies:[13]}
         ],
-        dinner:[]
+        dinner:[
+          {menu:"현미밥",allergies:[]},
+          {menu:"유부주머니어묵국",allergies:[1,5,6,8,9,10,16,18]},
+          {menu:"김치제육볶음",allergies:[5,6,9,10,12,13]},
+          {menu:"츄러스고구마맛탕",allergies:[1,2,5,6,13]},
+          {menu:"백김치",allergies:[6]},
+          {menu:"블루베리마카롱",allergies:[1,2,6]}
+        ]
       },
       {
-        date:"11/27",day:"금",note:"",
+        date:"8/28",day:"금",note:"잔반없는 날",
         lunch:[
-          {menu:"미니쌀국수",allergies:[5,6,15,16,18]},
-          {menu:"불고기바게트샌드위치",allergies:[2,5,6]},
-          {menu:"김가루밥(소량)",allergies:[1,2,5,6,9,13,16,18]},
-          {menu:"구운버섯샐러드",allergies:[2,5,6,13]},
-          {menu:"단무지/배추김치",allergies:[9]},
-          {menu:"앙버터호두과자",allergies:[]}
+          {menu:"메밀막국수",allergies:[3,5,6,13]},
+          {menu:"지코바덮밥&눈꽃치즈",allergies:[1,2,5,6,12,15]},
+          {menu:"팽이버섯된장국",allergies:[5,6,8,9,18]},
+          {menu:"블랙회오리감자튀김",allergies:[5]},
+          {menu:"구운버섯샐러드",allergies:[5,6]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"토마토황도절임",allergies:[11,12]}
         ],
-        dinner:[]
+        dinner:[
+          {menu:"혼합잡곡밥",allergies:[5]},
+          {menu:"소고기 콩나물국",allergies:[5,6,8,9,16,18]},
+          {menu:"불향쭈꾸미불고기",allergies:[5,6,10,12,13,18]},
+          {menu:"베이컨크림떡볶이",allergies:[2,5,6,10,13,18]},
+          {menu:"깍두기",allergies:[9]},
+          {menu:"레몬마들렌",allergies:[1,2,5,6]}
+        ]
       }
     ]
   },
 
   5: {
-    title:"5주차 (11월 30일)",
+    title:"5주차 (8월 31일)",
     days:[
       {
-        date:"11/30",day:"월",note:"기말시험",
+        date:"8/31",day:"월",note:"",
         lunch:[
-          {menu:"싸이치킨수제버거",allergies:[1,2,5,6,10,15,16,18]},
-          {menu:"소고기야채죽",allergies:[8,9,16,18]},
-          {menu:"케이준감자튀김&케첩",allergies:[5,6,12]},
-          {menu:"콘샐러드",allergies:[1,5,13]},
-          {menu:"피클/배추김치",allergies:[9]},
-          {menu:"애플사이다비니거",allergies:[]}
+          {menu:"참치마요덮밥",allergies:[1,5,16,18]},
+          {menu:"미소된장국",allergies:[5,6,8,9,18]},
+          {menu:"치킨너겟&머스타드",allergies:[1,2,5,6,12,13,15]},
+          {menu:"쫄면무침",allergies:[5,6,13]},
+          {menu:"배추김치",allergies:[9]},
+          {menu:"포도",allergies:[]}
         ],
         dinner:[]
       }
